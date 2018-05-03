@@ -38,9 +38,19 @@ network = regression(network, optimizer='adam', loss='categorical_crossentropy',
 
 #training
 model = tflearn.DNN(network, tensorboard_verbose=2)
-model.fit(X, Y, n_epoch=50, shuffle=True, validation_set=(testX, testY), show_metric=True, batch_size=96, run_id='brandberg')
+model.fit(X, Y, n_epoch=12, shuffle=True, validation_set=(testX, testY), show_metric=True, batch_size=96, run_id='brandberg')
+
 
 #classifier
+class color:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   END = '\033[0m'
+
 while True:
 	cin = input('image path: ')
 	imagePath = Path(cin)
@@ -49,8 +59,21 @@ while True:
 	img.load()
 	img = resize_image(img, 200, 250)
 
-	data = np.asarray(img, dtype="int32" )
-
+	data = np.asarray(img, dtype="float32")
+	data /= 255
 	data = np.reshape(data, (1, 250, 200, 4))
-	
-	print(model.predict(data))
+	result = model.predict(data)
+	print(color.BLUE + 'Result:' + color.END)
+	if result[0][0] > .5:
+		if result[0][0] > .9:
+			print(color.GREEN + 'Male   (' + str(result[0][0]) + ')' + color.END)
+			print(color.RED + 'Female (' + str(result[0][1]) + ')' + color.END)
+		else:
+			print(color.CYAN + 'Male   (' + str(result[0][0]) + ')' + color.END)
+			print(color.BLUE + 'Female (' + str(result[0][1]) + ')' + color.END)
+	elif result[0][0] < .1:
+		print(color.RED + 'Male   (' + str(result[0][0]) + ')' + color.END)
+		print(color.GREEN + 'Female (' + str(result[0][1]) + ')' + color.END)
+	else:
+		print(color.BLUE + 'Male   (' + str(result[0][0]) + ')' + color.END)
+		print(color.CYAN + 'Female (' + str(result[0][1]) + ')' + color.END)
