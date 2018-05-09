@@ -22,7 +22,6 @@ tf.reset_default_graph()
 
 #Load Datasets
 X, Y = image_preloader('C:\\Users\\lukas\\Documents\\Uni\\KI\\kat\\ROOT', image_shape=(200, 250), mode='folder' , categorical_labels=True, normalize=True)
-testX, testY = image_preloader('C:\\Users\\lukas\\Documents\\Uni\\KI\\kat\\TEST', image_shape=(200, 250), mode='folder', categorical_labels=True, normalize=True)
 
 #Convolutional Neural Network
 network = input_data(shape=[None, 250, 200, 4])
@@ -38,7 +37,7 @@ network = regression(network, optimizer='adam', loss='categorical_crossentropy',
 
 #training
 model = tflearn.DNN(network, tensorboard_verbose=2)
-model.fit(X, Y, n_epoch=12, shuffle=True, validation_set=(testX, testY), show_metric=True, batch_size=96, run_id='brandberg')
+model.fit(X, Y, n_epoch=20, shuffle=True, validation_set=0.1, show_metric=True, batch_size=96, run_id='brandberg')
 
 
 #classifier
