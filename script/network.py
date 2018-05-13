@@ -21,11 +21,11 @@ from tflearn.data_utils import resize_image
 tf.reset_default_graph()
 
 #Load Datasets
-X, Y = image_preloader('C:\\Users\\lukas\\Documents\\Uni\\KI\\kat\\ROOT', image_shape=(200, 250), mode='folder' , categorical_labels=True, normalize=True)
+X, Y = image_preloader('C:\\Users\\lukas\\Documents\\Uni\\KI\\kat\\ROOT', image_shape=(100, 125), mode='folder' , categorical_labels=True, normalize=True)
 
 #Convolutional Neural Network
-network = input_data(shape=[None, 250, 200, 4])
-network = conv_2d(network, 32, 3, activation='relu')
+network = input_data(shape=[None, 125, 100, 4])
+network = conv_2d(network, 100, 10, activation='relu')
 network = max_pool_2d(network, 2)
 network = conv_2d(network, 64, 3, activation='relu')
 network = conv_2d(network, 64, 3, activation='relu')
@@ -37,8 +37,10 @@ network = regression(network, optimizer='adam', loss='categorical_crossentropy',
 
 #training
 model = tflearn.DNN(network, tensorboard_verbose=2)
-model.fit(X, Y, n_epoch=20, shuffle=True, validation_set=0.1, show_metric=True, batch_size=96, run_id='brandberg')
+model.fit(X, Y, n_epoch=50, shuffle=True, validation_set=0.1, show_metric=True, batch_size=96, run_id='brandberg')
 
+
+#Overfitting??
 
 #classifier
 class color:
@@ -51,28 +53,30 @@ class color:
    END = '\033[0m'
 
 while True:
-	cin = input('image path: ')
-	imagePath = Path(cin)
+	try:
+		cin = input('image path: ')
+		imagePath = Path(cin)
 
-	img = Image.open(imagePath)
-	img.load()
-	img = resize_image(img, 200, 250)
-
-	data = np.asarray(img, dtype="float32")
-	data /= 255
-	data = np.reshape(data, (1, 250, 200, 4))
-	result = model.predict(data)
-	print(color.BLUE + 'Result:' + color.END)
-	if result[0][0] > .5:
-		if result[0][0] > .9:
-			print(color.GREEN + 'Male   (' + str(result[0][0]) + ')' + color.END)
-			print(color.RED + 'Female (' + str(result[0][1]) + ')' + color.END)
+		img = Image.open(imagePath)
+		img.load()
+		img = resize_image(img, 100, 125)
+		data = np.asarray(img, dtype="float32")
+		data /= 255
+		data = np.reshape(data, (1, 125, 100, 4))
+		result = model.predict(data)
+		print(color.BLUE + 'Result:' + color.END)
+		if result[0][0] > .5:
+			if result[0][0] > .9:
+				print(color.GREEN + 'Male   (' + str(result[0][0]) + ')' + color.END)
+				print(color.RED + 'Female (' + str(result[0][1]) + ')' + color.END)
+			else:
+				print(color.CYAN + 'Male   (' + str(result[0][0]) + ')' + color.END)
+				print(color.BLUE + 'Female (' + str(result[0][1]) + ')' + color.END)
+		elif result[0][0] < .1:
+			print(color.RED + 'Male   (' + str(result[0][0]) + ')' + color.END)
+			print(color.GREEN + 'Female (' + str(result[0][1]) + ')' + color.END)
 		else:
-			print(color.CYAN + 'Male   (' + str(result[0][0]) + ')' + color.END)
-			print(color.BLUE + 'Female (' + str(result[0][1]) + ')' + color.END)
-	elif result[0][0] < .1:
-		print(color.RED + 'Male   (' + str(result[0][0]) + ')' + color.END)
-		print(color.GREEN + 'Female (' + str(result[0][1]) + ')' + color.END)
-	else:
-		print(color.BLUE + 'Male   (' + str(result[0][0]) + ')' + color.END)
-		print(color.CYAN + 'Female (' + str(result[0][1]) + ')' + color.END)
+			print(color.BLUE + 'Male   (' + str(result[0][0]) + ')' + color.END)
+			print(color.CYAN + 'Female (' + str(result[0][1]) + ')' + color.END)
+	except FileNotFoundError:
+		print('File not found.')
