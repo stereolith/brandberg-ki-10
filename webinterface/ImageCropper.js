@@ -945,7 +945,9 @@ window.onload = function () {
 function preview() {
     if (crop.isImageSet()) {
         var img = crop.getCroppedImage();
+        console.log(img);
         img.onload = (function () { return previewLoaded(img); });
+        document.getElementById("saveBtn").addEventListener("click", saveFile(img));
     }
 }
 function previewLoaded(img) {
@@ -967,6 +969,13 @@ function handleFileSelect(evt) {
     if (file) {
         reader.readAsDataURL(file);
     }
+}
+function saveFile(img) {
+    var fs = require('fs');
+    var imgb64 = img.getAttribute("src");
+    var data = imgb64.replace(/^data:image\/\w+;base64,/, "");
+    var buf = new Buffer(data, 'base64');
+    fs.writeFile('image.png', buf);
 }
 document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
 //# sourceMappingURL=ImageCropperTest.js.map
