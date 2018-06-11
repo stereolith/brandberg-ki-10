@@ -21,37 +21,23 @@ from tflearn.data_utils import resize_image
 tf.reset_default_graph()
 
 #Load Datasets
-X, Y = image_preloader('C:\\Users\\lukas\\Documents\\Uni\\KI\\kat\\ROOT', image_shape=(100, 125), mode='folder' , categorical_labels=True, normalize=True)
+X, Y = image_preloader('C:\\Users\\lukas\\Documents\\Uni\\KI\\kat\\ROOT', image_shape=(160, 180), mode='folder' , categorical_labels=True, normalize=True)
 
 #Convolutional Neural Network
-network = input_data(shape=[None, 125, 100, 4])
-network = conv_2d(network, 100, 10, activation='relu')
+network = input_data(shape=[None, 180, 160, 4])
+network = conv_2d(network, 32, 5, activation='relu')
 network = max_pool_2d(network, 2)
-network = conv_2d(network, 64, 3, activation='relu')
-network = conv_2d(network, 64, 3, activation='relu')
-network = max_pool_2d(network, 2)
+
 network = fully_connected(network, 512, activation='relu')
 network = dropout(network, 0.5)
 network = fully_connected(network, 2, activation='softmax')
 network = regression(network, optimizer='adam', loss='categorical_crossentropy', learning_rate=0.001)
 
 #training
-model = tflearn.DNN(network, tensorboard_verbose=2)
-model.fit(X, Y, n_epoch=50, shuffle=True, validation_set=0.1, show_metric=True, batch_size=96, run_id='brandberg')
-
-
-#Overfitting??
+model = tflearn.DNN(network, tensorboard_verbose=3)
+model.fit(X, Y, n_epoch=40, shuffle=True, validation_set=0.2, show_metric=True, batch_size=96, run_id='brandberg')
 
 #classifier
-class color:
-   PURPLE = '\033[95m'
-   CYAN = '\033[96m'
-   BLUE = '\033[94m'
-   GREEN = '\033[92m'
-   YELLOW = '\033[93m'
-   RED = '\033[91m'
-   END = '\033[0m'
-
 while True:
 	try:
 		cin = input('image path: ')
@@ -59,24 +45,12 @@ while True:
 
 		img = Image.open(imagePath)
 		img.load()
-		img = resize_image(img, 100, 125)
+		img = resize_image(img, 160, 180)
 		data = np.asarray(img, dtype="float32")
 		data /= 255
-		data = np.reshape(data, (1, 125, 100, 4))
+		data = np.reshape(data, (1, 180, 160, 4))
 		result = model.predict(data)
-		print(color.BLUE + 'Result:' + color.END)
-		if result[0][0] > .5:
-			if result[0][0] > .9:
-				print(color.GREEN + 'Male   (' + str(result[0][0]) + ')' + color.END)
-				print(color.RED + 'Female (' + str(result[0][1]) + ')' + color.END)
-			else:
-				print(color.CYAN + 'Male   (' + str(result[0][0]) + ')' + color.END)
-				print(color.BLUE + 'Female (' + str(result[0][1]) + ')' + color.END)
-		elif result[0][0] < .1:
-			print(color.RED + 'Male   (' + str(result[0][0]) + ')' + color.END)
-			print(color.GREEN + 'Female (' + str(result[0][1]) + ')' + color.END)
-		else:
-			print(color.BLUE + 'Male   (' + str(result[0][0]) + ')' + color.END)
-			print(color.CYAN + 'Female (' + str(result[0][1]) + ')' + color.END)
+		print('Male   (' + str(result[0][0]) + ')')
+		print('Female (' + str(result[0][1]) + ')')
 	except FileNotFoundError:
 		print('File not found.')
