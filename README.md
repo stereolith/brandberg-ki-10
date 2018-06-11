@@ -11,7 +11,7 @@ DL network for classifying gender in Brandberg rock art
 * Web-Interface:
 
 ### Roadmap 
-* DNN weiter optimieren
+* DNN weiter optimieren:
 	* Performance bei größer werdender Datenbasis prüfen (Bessere Ergebnisse bei größerer Varianz der Trainingsdaten?)
 	* Entfernen von Farbe/ Konventierung in Graustufen zum schnelleren trainieren und bestmöglichen Abstraktion von Merkmalen zur Erkennung von Geschlecht
 
