@@ -21,6 +21,7 @@ DL network for classifying gender in Brandberg rock art
 
 * Web-Interface: 
 	* Verbindung von Web-Interface (JavaScript) und DNN (Python-Script) auf einem Host-Rechner
+	* Beginn die Seite zu gestalten (noch ganz am Anfang)	
 
 
 ## Zwischenstand 07.05.2018
