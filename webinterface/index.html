@@ -2,27 +2,25 @@
 <html>
 <head lang="en">
 		<meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css"/>
 		<title>Image Cropper Test</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	</head>
 	<body>
-        <img src="bild.jpeg" id="backgroundImage" alt="Felsmalerei Bild">
-        <div id="wrapper"></div>
-        <div id="header">KI - Brandberg Felsmalerei </div> 
-		<div id="select">
-			Select image to crop: 
-            <input type="file" id="fileInput" name="file" multiple="" />
+
+		<div>
+			Select image to crop: <input type="file" id="fileInput" name="file" multiple="" />
 		</div>
 		<div>
-			<canvas id="imageCanvas">
+			<canvas id="imageCanvas" width="600" height="400" style="border:0px solid #000000;">
 			</canvas>
 		</div>
-		<div id="cropped">
+		<div>
 		Cropped image:
 		</div>
 		<div id="preview"></div>
-        <button id="saveBtn">Save file</button>
-		<script src="ImageCropperTest.js"></script>
+		<button id="saveBtn">Als Datei speichern</button>
+		<script src="script.js"></script>
 		<script src="ImageCropper.js"></script>
 	</body>
 </html>
