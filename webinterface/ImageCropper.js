@@ -1,19 +1,3 @@
-function sendImg() {
-    console.log("test");
-    //var value = $( "#previewImg" ).attr('src');
-    //console.log(value);
-    var value = "a";
-    if ($(value).val() != 0) {
-    $.post("server.php", {
-        variable:value
-    }, function(data) {
-        if (data != "") {
-            alert('We sent Jquery string to PHP : ' + data);
-        }
-    });
-    }
-}
-
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -961,18 +945,14 @@ window.onload = function () {
 function preview() {
     if (crop.isImageSet()) {
         var img = crop.getCroppedImage();
+        console.log(img);
         img.onload = (function () { return previewLoaded(img); });
         document.getElementById("saveBtn").addEventListener("click", saveFile(img));
-        
-
     }
 }
 function previewLoaded(img) {
-    sendImg();
     if (img) {
         document.getElementById("preview").appendChild(img);
-        $( "#preview > img" ).attr('id', 'previewImg');
-        sendImg();
     }
 }
 function handleFileSelect(evt) {
@@ -990,7 +970,13 @@ function handleFileSelect(evt) {
         reader.readAsDataURL(file);
     }
 }
-
+function saveFile(img) {
+    var fs = require('fs');
+    var imgb64 = img.getAttribute("src");
+    var data = imgb64.replace(/^data:image\/\w+;base64,/, "");
+    var buf = new Buffer(data, 'base64');
+    fs.writeFile('image.png', buf);
+}
 document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
 //# sourceMappingURL=ImageCropperTest.js.map
 //# sourceMappingURL=ImageCropper.js.map
