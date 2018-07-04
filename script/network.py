@@ -25,9 +25,10 @@ X, Y = image_preloader('C:\\Users\\lukas\\Documents\\Uni\\KI\\kat\\ROOT', image_
 
 #Convolutional Neural Network
 network = input_data(shape=[None, 180, 160, 4])
-network = conv_2d(network, 32, 5, activation='relu')
+network = conv_2d(network, 64, 3, activation='relu')
 network = max_pool_2d(network, 2)
-
+network = conv_2d(network, 64, 3, activation='relu')
+network = max_pool_2d(network, 2)
 network = fully_connected(network, 512, activation='relu')
 network = dropout(network, 0.5)
 network = fully_connected(network, 2, activation='softmax')
@@ -35,7 +36,7 @@ network = regression(network, optimizer='adam', loss='categorical_crossentropy',
 
 #training
 model = tflearn.DNN(network, tensorboard_verbose=3)
-model.fit(X, Y, n_epoch=40, shuffle=True, validation_set=0.2, show_metric=True, batch_size=96, run_id='brandberg')
+model.fit(X, Y, n_epoch=30, shuffle=True, validation_set=0.2, show_metric=True, batch_size=96, run_id='brandberg')
 
 #classifier
 while True:
