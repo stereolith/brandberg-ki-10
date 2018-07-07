@@ -1,7 +1,7 @@
 Das bereits trainierte Model muss in den htdocs-Ordner kopiert werden. Dieses kann leider nicht auf github 
 hochgeladen werden, da die Dateien zu groß sind. Die drei Dateien "brandberg.tflearn.meta", "brandberg.tflearn.index" sowie 
 "brandberg.tflearn.data-00000-of-00001", die beim Trainieren des Netzwerkes auf dem eigenen PC erzeugt werden, müssen sich 
-in Unterordner "master" eines Ordners "models" im htdocs-Ordner befinden.
+im Unterordner "master" eines Ordners "models" im htdocs-Ordner befinden. Diese Ordnerstruktur muss selbst angelegt werden.
 
 ![alt tag](https://github.com/stereolith/brandberg-ki-10/blob/master/Ordner-Struktur.PNG)
 
