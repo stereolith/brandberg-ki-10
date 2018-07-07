@@ -8,6 +8,6 @@ im Unterordner "master" eines Ordners "models" im htdocs-Ordner befinden. Diese 
 
 ![](https://github.com/stereolith/brandberg-ki-10/blob/master/screenshots/Ordner-Struktur-model-Dateien.PNG)
 
-Benötigt wird die Installation der Python-Library "matplotlib" (https://matplotlib.org/users/installing.html.
+Benötigt wird die Installation der Python-Library "matplotlib" (https://matplotlib.org/users/installing.html).
 Ergebnis der Classification wird als Kreisdiagramm in PNG-Datei (result.png) in htdocs-Ordner gespeichert (siehe classifier.py).
 Sobald result.png vorhanden, lässt sich die Grafik per Klick auf den Button "Show the result" auf der HTML-Seite anzeigen.
