@@ -3,10 +3,10 @@ hochgeladen werden, da die Dateien zu groß sind. Die drei Dateien "brandberg.tf
 "brandberg.tflearn.data-00000-of-00001", die beim Trainieren des Netzwerkes auf dem eigenen PC erzeugt werden, müssen sich 
 im Unterordner "master" eines Ordners "models" im htdocs-Ordner befinden. Diese Ordnerstruktur muss selbst angelegt werden.
 
-![alt tag](https://github.com/stereolith/brandberg-ki-10/blob/master/Ordner-Struktur.PNG)
+![](https://github.com/stereolith/brandberg-ki-10/blob/master/screenshots/Ordner-Struktur.PNG)
 
 
-![alt tag](https://github.com/stereolith/brandberg-ki-10/blob/master/Ordner-Struktur-model-Dateien.PNG)
+![](https://github.com/stereolith/brandberg-ki-10/blob/master/screenshots/Ordner-Struktur-model-Dateien.PNG)
 
 Benötigt wird die Installation der Python-Library "matplotlib" (https://matplotlib.org/users/installing.html.
 Ergebnis der Classification wird als Kreisdiagramm in PNG-Datei (result.png) in htdocs-Ordner gespeichert (siehe classifier.py).
