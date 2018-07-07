@@ -34,4 +34,4 @@ DL network for classifying gender in Brandberg rock art
 * Daten in verarbeitbare Form gebracht via TFLearn "Image PreLoader"-Funktion
 * Erstes Convolutional Neural Network aus einem Beispiel zur Klassifizierung vom CIFAR-10 dataset mit den Figuren-Daten erfolgreich trainert ([Python-Script](https://github.com/stereolith/brandberg-ki-10/blob/master/script/network.py))
 
-![](https://raw.githubusercontent.com/stereolith/brandberg-ki-10/master/tensorboard_0705.PNG)
+![](https://github.com/stereolith/brandberg-ki-10/blob/master/screenshots/tensorboard_0705.PNG)
