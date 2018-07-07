@@ -4,6 +4,8 @@ hochgeladen werden, da die Dateien zu groß sind. Die drei Dateien "brandberg.tf
 in Unterordner "master" eines Ordners "models" im htdocs-Ordner befinden.
 
 ![alt tag](https://github.com/stereolith/brandberg-ki-10/blob/master/Ordner-Struktur.PNG)
+
+
 ![alt tag](https://github.com/stereolith/brandberg-ki-10/blob/master/Ordner-Struktur-model-Dateien.PNG)
 
 Benötigt wird die Installation der Python-Library "matplotlib" (https://matplotlib.org/users/installing.html)
