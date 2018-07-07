@@ -22,7 +22,7 @@ DL network for classifying gender in Brandberg rock art
 * Web-Interface: 
 	* Verbindung von Web-Interface (JavaScript) und DNN (Python-Script) auf einem Host-Rechner
 	* Beginn die Seite zu gestalten (noch ganz am Anfang)	
-![](https://github.com/stereolith/brandberg-ki-10/blob/master/Screenshot.jpg)
+![](https://github.com/stereolith/brandberg-ki-10/blob/master/screenshots/Screenshot.jpg)
 
 ## Zwischenstand 07.05.2018
 
