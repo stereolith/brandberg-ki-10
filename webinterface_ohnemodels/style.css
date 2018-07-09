@@ -1,3 +1,88 @@
+html {
+    width: 100%; 
+    height: 100%;
+    margin: 0 auto;
+    font-family: sans-serif;
+    z-index: 1;
+}
+
+html::before {
+  content: "";
+  position: absolute;
+  width: 100%; 
+  height: 100%;  
+  opacity: .6; 
+  z-index: -1;
+  background-repeat: repeat;
+  background-size: 100% 100%;
+  background-image: url("http://3.bp.blogspot.com/-RYN9YTC-6mA/U5wuojYCgwI/AAAAAAAADEo/6vjF0vojo-8/s1600/DSC_4385_snake_cave_pictographs_day2.jpg");
+  /*Es muss noch hinzugefügt werden, dass der Hintergrund "mitwächst" , wenn sich die HTML-Seite durch das Preview-Img verlängert.
+  Momentan entsteht am unteren Seitenrand eine weiße Fläche*/
+}
+
+
 body {
 	font-family: sans-serif;
+}
+
+#container {
+    min-height: 100%;
+    position: relative;
+    margin: 50px;
+
+}
+
+#header {
+	margin: 0 1.5% 24px 1.5%;
+    text-align: center;
+}
+
+#input {
+    float: left;
+    width: 50%;
+    display: inline-block;
+    padding-bottom: 40px;
+    vertical-align: top;
+    font-size: 16px;
+}
+
+#selectImgText {
+    margin-bottom: 50px;
+    background: white;
+    padding: 5px;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 5px;
+}
+
+#croppedImgText {
+    margin-top: 50px;
+    display: inline-block;
+    background: white;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#preview {
+    margin-top: 20px;
+}
+
+#resultNote {
+     margin-top: 0px;
+     background: white;
+     padding: 10px;
+     display: inline-block;
+     border-radius: 5px;
+}
+
+#result {
+    float: right;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+}
+
+#footer {
+
 }

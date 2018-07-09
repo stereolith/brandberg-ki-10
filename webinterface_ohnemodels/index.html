@@ -3,34 +3,39 @@
 <head lang="en">
 		<meta charset="UTF-8">
 		<title>Image Cropper Test</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 		
 	</head>
 	<body>
-
-		<div>
-			Select image to crop: <input type="file" id="fileInput" name="file" multiple=""/>
+		<div id="wrapper">
+		<div id="header">
+			<h1>Gender Classification: Drop and Crop</h1>
 		</div>
-		<div>
+		<div id="container">
+		<div id="input">
+		<div id="selectImgText">
+			<h2>Select image to crop:</h2>
+			<input type="file" id="fileInput" name="file" multiple=""/>
+		</div>
+		<div id="canvas">
 			<canvas id="imageCanvas" width="600" height="400" style="border:0px solid #000000;">
 			</canvas>
 		</div>
-		<div>
-		Cropped image:
+		<div id="croppedImgText">
+		<h2>Cropped image:</h2>
 		</div>
-		<div id="preview"></div>
-		<button id="saveBtn">Als Datei speichern</button>
-
+		<div id="preview"></div><br>
+		<button id="saveBtn">Save as file</button>
+		</div>
 		<div id="result">
-		<p id="resultNote">Dieser Text soll sich ändern, wenn das Ergebnis als PNG-Datei im htdocs-Ordner vorliegt.</p>	
+		<h2 id="resultNote">The result is displayed below, as soon as it is available:</h2>	
 		<img id="resultImg"/>
-		<div id="resultButton">
-		<input type="button" value="Show the result" onclick="showResult()"/>
 		</div>
 		</div>
-
 		<footer></footer>
+		</div>
 		<script src="ImageCropper.js"></script>
 	</body>
 </html>

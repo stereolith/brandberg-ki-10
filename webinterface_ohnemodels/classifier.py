@@ -46,7 +46,7 @@ try:
 
 	labels = ['Male', 'Female']
 	sizes = [str(result[0][0]),str(result[0][1])]
-	colors = ['#ff9999','#66b3ff']
+	colors = ['#66b3ff','#ff9999']
 	fig1, ax1 = plt.subplots()
 	ax1.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%',
         shadow=True, startangle=90)

@@ -5,7 +5,7 @@ function sendImg() {
     $.post("server.php", {
         variable:value
     }, function(data) {
-        if (data != "") { //Callback from 
+            { //Callback from 
             $("#resultImg").attr('src','result.png');
         }
     });
