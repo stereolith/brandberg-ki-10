@@ -54,7 +54,7 @@ try:
 	plt.tight_layout()
 
 	#speichert Grafik auf in htdocs-Ordner auf Computer (sofern Pfad stimmt)
-	plt.savefig('/xampp/htdocs/result.png')
+	plt.savefig('./result.png')
 
 	#gibt Klassifikationsergebnis in alert auf Seite aus
 	#print('Male   (' + str(result[0][0]) + ')   Female (' + str(result[0][1]) + ')')

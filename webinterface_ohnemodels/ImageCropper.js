@@ -5,11 +5,10 @@ function sendImg() {
     $.post("server.php", {
         variable:value
     }, function(data) {
-        if (data != "") {
-            alert('Ergebnis: ' + data);
+        if (data != "") { //Callback from 
+            $("#resultImg").attr('src','result.png');
         }
     });
-    
 }
 
 var __extends = this.__extends || function (d, b) {
