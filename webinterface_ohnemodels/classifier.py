@@ -44,9 +44,16 @@ try:
 	#Ergebnis der Classification in Kreisdiagramm speichern
 	import matplotlib.pyplot as plt
 
-	labels = ['Male', 'Female']
-	sizes = [str(result[0][0]),str(result[0][1])]
-	colors = ['#66b3ff','#ff9999']
+	
+	if result[0][0] > result[0][1]:
+		labels = ['Male', 'Female']
+		sizes = [str(result[0][0]),str(result[0][1])]
+		colors = ['#4ea337','#bec6d3']
+	else:
+		labels = ['Female', 'Male']
+		sizes = [str(result[0][1]), str(result[0][0])]
+		colors = ['#4ea337','#bec6d3']
+	
 	fig1, ax1 = plt.subplots()
 	ax1.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%',
         shadow=True, startangle=90)
@@ -54,7 +61,7 @@ try:
 	plt.tight_layout()
 
 	#speichert Grafik auf in htdocs-Ordner auf Computer (sofern Pfad stimmt)
-	plt.savefig('./result.png')
+	plt.savefig('./result.png', transparent=True)
 
 	#gibt Klassifikationsergebnis in alert auf Seite aus
 	#print('Male   (' + str(result[0][0]) + ')   Female (' + str(result[0][1]) + ')')
