@@ -2,13 +2,15 @@ function sendImg() {
     console.log("Zugeschnittenes Bild wurde auf dem Server gespeichert");
     var value = $( "#previewImg" ).prop('src');
     $(".spinner").show();
-    $("#resultImg").attr('src','');
+    $("#resultImg").hide();
   
     $.post("server.php", {
         variable:value
     }, function(data) {
             { //Callback from 
+
             $("#resultImg").attr('src','result.png');
+            $("#resultImg").show();
             $(".spinner").hide();
         }
     });
