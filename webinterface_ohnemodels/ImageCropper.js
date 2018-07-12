@@ -1,7 +1,7 @@
 function sendImg() {
     console.log("Zugeschnittenes Bild wurde auf dem Server gespeichert");
     var value = $( "#previewImg" ).prop('src');
-    $(".spinner").show();
+    $(".sk-fading-circle").show();
     $("#resultImg").hide();
   
     $.post("server.php", {
@@ -11,7 +11,7 @@ function sendImg() {
 
             $("#resultImg").attr('src','result.png');
             $("#resultImg").show();
-            $(".spinner").hide();
+            $(".sk-fading-circle").hide();
         }
     });
 }

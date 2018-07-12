@@ -44,11 +44,23 @@ try:
 	#Ergebnis der Classification in Kreisdiagramm speichern
 	import matplotlib.pyplot as plt
 
+	font = {'family' : 'sans-serif',
+	        'weight' : 'bold'}
+
+	plt.rc('font', **font)
+
+	SMALL_SIZE = 12
+	BIGGER_SIZE = 16
+
+	plt.rc('font', size=SMALL_SIZE)          # kontrolliert die Default-Textgröße (hier: Prozentzahlen)
+	plt.rc('xtick', labelsize=BIGGER_SIZE)   # Textgröße der Label auf der X-Achse
+	plt.rc('ytick', labelsize=BIGGER_SIZE)   # Textgröße der Label auf der Y-Achse
 	
 	if result[0][0] > result[0][1]:
 		labels = ['Male', 'Female']
 		sizes = [str(result[0][0]),str(result[0][1])]
 		colors = ['#4ea337','#bec6d3']
+
 	else:
 		labels = ['Female', 'Male']
 		sizes = [str(result[0][1]), str(result[0][0])]
