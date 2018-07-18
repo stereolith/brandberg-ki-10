@@ -32,6 +32,7 @@ model.load("./models/master/brandberg.tflearn")
 
 #classifier
 try:
+	#preprocessing
 	imagePath = Path("input.png")
 	img = Image.open(imagePath)
 	img.load()
@@ -39,7 +40,13 @@ try:
 	data = np.asarray(img, dtype="float32")
 	data /= 255
 	data = np.reshape(data, (1, 180, 160, 4))
+
+	os.remove(imagePath)
+
+	#inferencing
 	result = model.predict(data)
+		#result: 	result[0][0] (propability Male, percentage),
+		#			result[0][1] (propability Female, percentage)
 
 	#Ergebnis der Classification in Kreisdiagramm speichern
 	import matplotlib.pyplot as plt
