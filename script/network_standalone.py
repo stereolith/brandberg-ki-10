@@ -36,5 +36,5 @@ network = regression(network, optimizer='adam', loss='categorical_crossentropy',
 
 #training
 model = tflearn.DNN(network, tensorboard_verbose=3)
-model.fit(X, Y, n_epoch=30, shuffle=True, validation_set=0.2, show_metric=True, batch_size=96, run_id='brandberg')
+model.fit(X, Y, n_epoch=13, shuffle=True, validation_set=0.2, show_metric=True, batch_size=96, run_id='brandberg')
 model.save('../models/master/brandberg.tflearn')

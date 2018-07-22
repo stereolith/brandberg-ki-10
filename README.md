@@ -1,6 +1,22 @@
 # brandberg-ki-10
 DL network for classifying gender in Brandberg rock art
 
+### 1. Convolutional Deep Neural Network
+Das Convolutional Deep Neural Network zur Klassifizierung ist in den Python-Scripten unter /script/ definiert. Basis bietet TensorFLow mit dem [TFLearn-Wrapper](http://tflearn.org/). <br><br>
+`network_standalone.py` Speichert das trainierte Netzwerk zur späteren Inferenz/ Klassifikaiton im webinterface ab, <br>
+`network.py` bietet nach dem Training in der Python-Konsole die möglichkeit der direkten Klassifikation eines Eingabebildes mittels EIngabe eines Bild-Pfades
+
+### 2. Web-Interface
+Ein Web-Interface zur einfacherern Inferenz von Eingabebildern liegt in /webinterface/. Die Oberfläche bietet ein Crop-Tool für das Zuschneiden des Eingabebildes und eine Vorschau des ausgeschnitten Bildes. Das Ergebnis der Inferenz wird nach einigen Sekunden in einem Kuchendiagramm dargestellt.
+* Die  enthaltenden Dateien müssen auf einem PHP-Fähigen Webserver (z.B. Apache) liegen
+* Ein vorher trainiertes und abgespeichertes Netzwerk (siehe  `script/network.py`) muss im Root-Ordner des Webservers im Verzeichnis `/models/master/` liegen
+* Auf dem Host-Rechner müssen Tensorflow und TFLearn installiert sein
+
+![](https://github.com/stereolith/brandberg-ki-10/blob/master/screenshots/webui_final.PNG)
+
+
+---
+
 
 ## Zwischenstand 11.06.2018
 

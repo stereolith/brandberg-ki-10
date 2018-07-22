@@ -40,9 +40,7 @@ try:
 	data = np.asarray(img, dtype="float32")
 	data /= 255
 	data = np.reshape(data, (1, 180, 160, 4))
-
-	os.remove(imagePath)
-
+	
 	#inferencing
 	result = model.predict(data)
 		#result: 	result[0][0] (propability Male, percentage),
